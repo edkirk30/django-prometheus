@@ -6,13 +6,13 @@ unapplied_migrations = Gauge(
     'django_migrations_unapplied_total',
     'Count of unapplied migrations by database connection',
     ['connection'],
-    multiprocess_mode='liveall')
+    multiprocess_mode='max')
 
 applied_migrations = Gauge(
     'django_migrations_applied_total',
     'Count of applied migrations by database connection',
     ['connection'],
-    multiprocess_mode='liveall')
+    multiprocess_mode='max')
 
 def ExportMigrationsForDatabase(alias, executor):
     plan = executor.migration_plan(executor.loader.graph.leaf_nodes())
